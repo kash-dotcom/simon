@@ -1,3 +1,4 @@
+const { futimes } = require("fs");
 const { choices } = require("yargs");
 
 let game = {
@@ -7,6 +8,15 @@ let game = {
     choices: ["button1","button2","button3","button4"],
 };
 
+function newGame () {
+    game.score = 0;
+    game.playerMoves = [];
+    game.currentGame = [];
+    showScore();
+};
 
+function showScore () {
+    document.getElementById("score").innerText = game.score;
+}
+module.exports = { game, newGame, showScore};
 
-module.exports = { game };
